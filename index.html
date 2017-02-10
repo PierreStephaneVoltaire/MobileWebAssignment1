@@ -65,7 +65,7 @@ and open the template in the editor.
 
         function Setposition() {
             var height = Math.floor(Math.random() * $(document).height()) + $("#container").height();
-            var width = Math.floor(Math.random() * $(document).width()) + $("#container").height();;
+            var width = Math.floor(Math.random() * $(document).width()) + $("#container").height();
             var Bheight = Math.floor(Math.random() * $(document).height()) + 20;
             var pos = {
                 H: height / 4
@@ -94,19 +94,19 @@ and open the template in the editor.
             var txt1 = $("<div id='container'></div>");
             $("body").append(txt1);
             $("#addBlue").addClass('blue').on("click", function () {
-                MakeBox($("#addBlue").val())
+                MakeBox($("#addBlue").val());
             });
             $("#removeBlue").addClass('blue').on("click", function () {
-                removebox($("#addBlue").val())
+                removebox($("#addBlue").val());
             });
             $("#addRed").addClass('red').on("click", function () {
-                MakeBox($("#addRed").val())
+                MakeBox($("#addRed").val());
             });
             $("#removeRed").addClass('red').on("click", function () {
-                removebox($("#addRed").val())
+                removebox($("#addRed").val());
             });
             $("#removeAll").on("click", function () {
-                removeAll()
+                removeAll();
             });
         });
     </script>
