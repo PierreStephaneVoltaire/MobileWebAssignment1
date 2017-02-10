@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+
+<head>
+    <title>PROG20261</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <style>
+        div {
+            position: absolute;
+        }
+        
+        .box {
+            border-style: solid;
+            text-align: center;
+        }
+        
+        .red {
+            background: red;
+        }
+        
+        .blue {
+            background: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="addBlue" value="blue" class="blueButton">Add Blue</button>
+    <button id="addRed" value="red" class="redButton">Add Red</button>
+    <button id="removeBlue" value="blue">Remove Blue</button>
+    <button id="removeRed" value="red">Remove Red</button>
+    <button id="removeAll" value="all">Remove All</button>
+    <!-- Remember: you can only modify code inside <style></style> and code inside <script></script> below. -->
+    <script type="text/javascript">
+        var blue = 0;
+        var red = 0;
+
+        function removeAll() {
+            $("#container").children().remove();
+            blue = 0;
+            red = 0;
+        }
+
+        function removebox(color) {
+            var c = "." + color;
+            if (color == "blue" && blue > 0) {
+                blue--;
+                $("#container").children(c).last().remove();
+            }
+            else if (color == "red" && red > 0) {
+                red--;
+                $("#container").children(c).last().remove();
+            }
+        }
+
+        function Setposition() {
+            var height = Math.floor(Math.random() * $(document).height()) + $("#container").height();
+            var width = Math.floor(Math.random() * $(document).width()) + $("#container").height();;
+            var Bheight = Math.floor(Math.random() * $(document).height()) + 20;
+            var pos = {
+                H: height / 4
+                , W: width / 4
+                , BH: height / 4
+            };
+            return pos;
+        }
+
+        function addBtns() {}
+
+        function MakeBox(color) {
+            var pos = Setposition();
+            var txt1 = $("<div></div>").addClass('box').addClass(color).css('height', pos.BH).css('width', pos.BH).css('top', pos.H).css('left', pos.W);
+            if (color == "blue") {
+                blue++;
+                txt1.text(blue);
+            }
+            else {
+                red++;
+                txt1.text(red);
+            }
+            $("#container").append(txt1);
+        }
+        $(document).ready(function () {
+            var txt1 = $("<div id='container'></div>");
+            $("body").append(txt1);
+            $("#addBlue").addClass('blue').on("click", function () {
+                MakeBox($("#addBlue").val())
+            });
+            $("#removeBlue").addClass('blue').on("click", function () {
+                removebox($("#addBlue").val())
+            });
+            $("#addRed").addClass('red').on("click", function () {
+                MakeBox($("#addRed").val())
+            });
+            $("#removeRed").addClass('red').on("click", function () {
+                removebox($("#addRed").val())
+            });
+            $("#removeAll").on("click", function () {
+                removeAll()
+            });
+        });
+    </script>
+</body>
+
+</html>
