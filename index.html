@@ -14,20 +14,100 @@ and open the template in the editor.
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <style>
+        .btnRa {
+  background: #c1ccd4;
+  background-image: -webkit-linear-gradient(top, #c1ccd4, #9fabb3);
+  background-image: -moz-linear-gradient(top, #c1ccd4, #9fabb3);
+  background-image: -ms-linear-gradient(top, #c1ccd4, #9fabb3);
+  background-image: -o-linear-gradient(top, #c1ccd4, #9fabb3);
+  background-image: linear-gradient(to bottom, #c1ccd4, #9fabb3);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #000000;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btnRa:hover {
+  background: #eff7fc;
+  background-image: -webkit-linear-gradient(top, #eff7fc, #cdcfd1);
+  background-image: -moz-linear-gradient(top, #eff7fc, #cdcfd1);
+  background-image: -ms-linear-gradient(top, #eff7fc, #cdcfd1);
+  background-image: -o-linear-gradient(top, #eff7fc, #cdcfd1);
+  background-image: linear-gradient(to bottom, #eff7fc, #cdcfd1);
+  text-decoration: none;
+}
+        .btnb {
+            background: #3498db;
+            background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+            background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+            background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+            background-image: -o-linear-gradient(top, #3498db, #2980b9);
+            background-image: linear-gradient(to bottom, #3498db, #2980b9);
+            -webkit-border-radius: 28;
+            -moz-border-radius: 28;
+            border-radius: 28px;
+            font-family: Arial;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 10px 20px 10px 20px;
+            text-decoration: none;
+        }
+
+        .btnb:hover {
+            background: #3cb0fd;
+            background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+            background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+            background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+            background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+            background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+            text-decoration: none;
+        }
+
+        .btn {
+            background: #d93434;
+            background-image: -webkit-linear-gradient(top, #d93434, #b82b2b);
+            background-image: -moz-linear-gradient(top, #d93434, #b82b2b);
+            background-image: -ms-linear-gradient(top, #d93434, #b82b2b);
+            background-image: -o-linear-gradient(top, #d93434, #b82b2b);
+            background-image: linear-gradient(to bottom, #d93434, #b82b2b);
+            -webkit-border-radius: 28;
+            -moz-border-radius: 28;
+            border-radius: 28px;
+            font-family: Arial;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 10px 20px 10px 20px;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: #fc3c3c;
+            background-image: -webkit-linear-gradient(top, #fc3c3c, #d93434);
+            background-image: -moz-linear-gradient(top, #fc3c3c, #d93434);
+            background-image: -ms-linear-gradient(top, #fc3c3c, #d93434);
+            background-image: -o-linear-gradient(top, #fc3c3c, #d93434);
+            background-image: linear-gradient(to bottom, #fc3c3c, #d93434);
+            text-decoration: none;
+        }
+
         div {
             position: absolute;
+            
         }
-        
+
         .box {
             border-style: solid;
             text-align: center;
-            font-size:2vw;
         }
-        
+
         .red {
             background: red;
         }
-        
+
         .blue {
             background: blue;
         }
@@ -56,8 +136,7 @@ and open the template in the editor.
             if (color == "blue" && blue > 0) {
                 blue--;
                 $("#container").children(c).last().remove();
-            }
-            else if (color == "red" && red > 0) {
+            } else if (color == "red" && red > 0) {
                 red--;
                 $("#container").children(c).last().remove();
             }
@@ -68,9 +147,9 @@ and open the template in the editor.
             var width = Math.floor(Math.random() * $(document).width()) + $("#container").height();
             var Bheight = Math.floor(Math.random() * $(document).height()) + 20;
             var pos = {
-                H: height / 4
-                , W: width / 4
-                , BH: height / 4
+                H: height / 4,
+                W: width / 4,
+                BH: height / 4
             };
             return pos;
         }
@@ -80,32 +159,33 @@ and open the template in the editor.
         function MakeBox(color) {
             var pos = Setposition();
             var txt1 = $("<div></div>").addClass('box').addClass(color).css('height', pos.BH).css('width', pos.BH).css('top', pos.H).css('left', pos.W);
+            var h=txt1.height();
+            txt1.css("font-size",h);
             if (color == "blue") {
                 blue++;
                 txt1.text(blue);
-            }
-            else {
+            } else {
                 red++;
                 txt1.text(red);
             }
             $("#container").append(txt1);
         }
-        $(document).ready(function () {
+        $(document).ready(function() {
             var txt1 = $("<div id='container'></div>");
             $("body").append(txt1);
-            $("#addBlue").addClass('blue').on("click", function () {
+            $("#addBlue").addClass('btnb').on("click", function() {
                 MakeBox($("#addBlue").val());
             });
-            $("#removeBlue").addClass('blue').on("click", function () {
+            $("#removeBlue").addClass('btnb').on("click", function() {
                 removebox($("#addBlue").val());
             });
-            $("#addRed").addClass('red').on("click", function () {
+            $("#addRed").addClass('btn').on("click", function() {
                 MakeBox($("#addRed").val());
             });
-            $("#removeRed").addClass('red').on("click", function () {
+            $("#removeRed").addClass('btn').on("click", function() {
                 removebox($("#addRed").val());
             });
-            $("#removeAll").on("click", function () {
+            $("#removeAll").addClass('btnRa').on("click", function() {
                 removeAll();
             });
         });
