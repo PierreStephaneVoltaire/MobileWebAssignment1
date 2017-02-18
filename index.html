@@ -173,10 +173,10 @@ and open the template in the editor.
             var pos = Setposition();
             var txt1 = $("<div></div>").addClass('box').addClass(color).css('height', pos.BH).css('width', pos.bw).css('top', pos.H).css('left', pos.W);
             if (pos.BH > pos.bw) {
-                txt1.css('font-size', (pos.BH / 3) + 'px').css('line-height', pos.BH + 'px').css('line-width', pos.bw + 'px');
+                txt1.css('font-size', (pos.BH / 3) + 'px');
             }
             else {
-                txt1.css('font-size', (pos.BH / 2) + 'px').css('line-width', pos.bw + 'px');
+                txt1.css('font-size', (pos.BH / 2) + 'px');
             }
             if (color == "blue") {
                 blue++;
@@ -199,15 +199,18 @@ and open the template in the editor.
             
             var txt1 = $("<div id='container'></div>");
             var txt2 = $("<div id='text'></div>");
+            
             if (getURLParam('name') != null&&getURLParam('name').length>0) {
                 txt2.text('name=' + getURLParam('name'));
                 txt2.append('<br>');
             }
+            
             if (getURLParam('id') != null&&getURLParam('id').length>0) {
                 txt2.append('id=' + getURLParam('id'));
-                $("body").append(txt2);
-                $("body").append(txt1);
+             
             }
+               $("body").append(txt2);
+                $("body").append(txt1);
             $("#addBlue").addClass('btnb').on("click", function () {
                 MakeBox($("#addBlue").val());
             });
