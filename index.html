@@ -97,11 +97,13 @@ and open the template in the editor.
         
         div {
             position: absolute;
+      
         }
         
         .box {
             border-style: solid;
             text-align: center;
+                  
         }
         
         .red {
@@ -145,15 +147,13 @@ and open the template in the editor.
 
         function Setposition() {
             $('body').css('overflow', 'hidden');
-            document.body.clientHeight;
-            document.body.clientWidth;
             var wh = $(window).outerHeight(true);
             var ww = $(window).outerWidth(true);
             var btn = $("#removeAll").outerHeight(true);
             var Bheight = Math.floor(Math.random() * (wh / 4)) + 20;
             var BW = Math.floor(Math.random() * (ww / 4)) + 20;
             var height = Math.floor(Math.random() * (wh - btn - Bheight - $('#text').outerHeight(true))) + (btn + Bheight);
-            var width = Math.floor(Math.random() * (ww - BW)) + 1;
+            var width = Math.floor(Math.random() * (ww - BW)) ;
             console.log('bw' + BW);
             console.log('bh' + Bheight);
             console.log('h' + height);
@@ -173,7 +173,7 @@ and open the template in the editor.
             var pos = Setposition();
             var txt1 = $("<div></div>").addClass('box').addClass(color).css('height', pos.BH).css('width', pos.bw).css('top', pos.H).css('left', pos.W);
             if (pos.BH > pos.bw) {
-                txt1.css('font-size', (pos.BH / 2) + 'px').css('line-height', pos.BH + 'px').css('line-width', pos.bw + 'px');
+                txt1.css('font-size', (pos.BH / 3) + 'px').css('line-height', pos.BH + 'px').css('line-width', pos.bw + 'px');
             }
             else {
                 txt1.css('font-size', (pos.BH / 2) + 'px').css('line-width', pos.bw + 'px');
@@ -194,6 +194,9 @@ and open the template in the editor.
             return ((results == null) || (results[1] == null)) ? '' : results[1];
         };
         $(document).ready(function () {
+       
+         
+            
             var txt1 = $("<div id='container'></div>");
             var txt2 = $("<div id='text'></div>");
             if (getURLParam('name') != null) {
