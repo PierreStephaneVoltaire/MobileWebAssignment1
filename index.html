@@ -199,11 +199,11 @@ and open the template in the editor.
             
             var txt1 = $("<div id='container'></div>");
             var txt2 = $("<div id='text'></div>");
-            if (getURLParam('name') != null) {
+            if (getURLParam('name') != null&&getURLParam('name').length>0) {
                 txt2.text('name=' + getURLParam('name'));
                 txt2.append('<br>');
             }
-            if (getURLParam('id') != null) {
+            if (getURLParam('id') != nullgetURLParam('id').length>0) {
                 txt2.append('id=' + getURLParam('id'));
                 $("body").append(txt2);
                 $("body").append(txt1);
