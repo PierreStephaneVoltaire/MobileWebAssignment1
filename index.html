@@ -97,13 +97,15 @@ and open the template in the editor.
         
         div {
             position: absolute;
-      
+            color: white;
         }
         
         .box {
             border-style: solid;
             text-align: center;
-                  
+             position:fixed;
+                 border-color: black;
+            vertical-align: middle;
         }
         
         .red {
@@ -147,13 +149,13 @@ and open the template in the editor.
 
         function Setposition() {
             $('body').css('overflow', 'hidden');
-            var wh = $(window).outerHeight(true);
-            var ww = $(window).outerWidth(true);
+            var wh = $(window).innerHeight();
+            var ww = $(window).innerWidth();
             var btn = $("#removeAll").outerHeight(true);
             var Bheight = Math.floor(Math.random() * (wh / 4)) + 20;
             var BW = Math.floor(Math.random() * (ww / 4)) + 20;
-            var height = Math.floor(Math.random() * (wh - btn - Bheight - $('#text').outerHeight(true))) + (btn + Bheight);
-            var width = Math.floor(Math.random() * (ww - BW)) ;
+            var height = Math.floor(Math.random() * (wh - btn - Bheight - $('#text').outerHeight(true) - 20)) + (btn + Bheight);
+            var width = Math.floor(Math.random() * (ww - BW)) + 1;
             console.log('bw' + BW);
             console.log('bh' + Bheight);
             console.log('h' + height);
@@ -172,7 +174,10 @@ and open the template in the editor.
         function MakeBox(color) {
             var pos = Setposition();
             var txt1 = $("<div></div>").addClass('box').addClass(color).css('height', pos.BH).css('width', pos.bw).css('top', pos.H).css('left', pos.W);
-            if (pos.BH > pos.bw) {
+            if (pos.BH > pos.bw * 3) {
+                txt1.css('font-size', 20 + 'px');
+            }
+            else if (pos.BH > pos.bw) {
                 txt1.css('font-size', (pos.BH / 3) + 'px');
             }
             else {
@@ -194,23 +199,19 @@ and open the template in the editor.
             return ((results == null) || (results[1] == null)) ? '' : results[1];
         };
         $(document).ready(function () {
-       
-         
-            
             var txt1 = $("<div id='container'></div>");
             var txt2 = $("<div id='text'></div>");
-            
-            if (getURLParam('name') != null&&getURLParam('name').length>0) {
+            if (getURLParam('name') != null && getURLParam('name').length > 0) {
                 txt2.text('name=' + getURLParam('name'));
                 txt2.append('<br>');
             }
-            
-            if (getURLParam('id') != null&&getURLParam('id').length>0) {
+            if (getURLParam('id') != null && getURLParam('id').length > 0) {
                 txt2.append('id=' + getURLParam('id'));
-             
             }
-               $("body").append(txt2);
-                $("body").append(txt1);
+            $("body").append(txt2);
+            txt1.css("height", $(window).innerHeight() - $("#removeAll").outerHeight(true) - $("#text").outerHeight(true) - 50);
+            txt1.css("width", $(window).innerWidth() - 20);
+            $("body").append(txt1);
             $("#addBlue").addClass('btnb').on("click", function () {
                 MakeBox($("#addBlue").val());
             });
